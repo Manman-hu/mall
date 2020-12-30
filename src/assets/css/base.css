@@ -1,0 +1,74 @@
+/* 获取根元素html, */
+
+
+/* css使用--为前缀定义变量，在使用时只要使用var(变量名)来引入:root定义全局变量 */
+
+
+/* tintColor是描述线条轮廓的颜色，具有继承性 */
+
+@import './normalize.css';
+:root {
+    --color-text: #666;
+    --color-high-text: #ff5777;
+    --color-tint: #ff8198;
+    --color-background: #fff;
+    --font-size: 14px;
+    --line-height: 1.5
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 盒子大小由设置的宽高决定，内外边距向里面填充 
+还有一些属性content-size(默认，只是内容的宽高);inherit(继承父元素的)*/
+}
+
+body {
+    /* 字体会按照先后顺序执行，当字体中间有空格或者由特殊符号#$等才需要加引号 */
+    font-family: 'Helvetic Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB' 'Microsoft YaHei', '微软雅黑'，Arial, sans-serif;
+    user-select: none;
+    /* 元素及其子元素的内容不可选中具有的属性值为text/auto/contain/all */
+    background: var(--color-background);
+    color: var(--color-text);
+    /* 为了实现自适应布局，移变移动端用户可以使用缩放灵活改变页面大小，
+css3中引入了视口(viewport)100vw代表移动端可视区域的宽度，100v和代表
+高度，与100%的区别在于100%是指相对于离他最近的父元素的宽高。 */
+    width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-text);
+}
+
+
+/* 清除浮动 给盒子末尾添加一个宽高为0的块级元素，并设置为隐藏
+为元素默认是行内元素，因此要转化为块级元素*/
+
+.clear-fix::after {
+    clear: both;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+
+/* 设置zoom:1可以在IE6下清除浮动、解决margin导致的重叠等问题 */
+
+.clear-fix {
+    zoom: 1;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
